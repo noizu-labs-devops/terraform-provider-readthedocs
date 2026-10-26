@@ -9,10 +9,11 @@ environment variables, subprojects, and Business-tier sharing can be created/rea
 read-only data sources.
 
 It is deliberately **not** a fork of `BarnabyShearer/readthedocs` (abandoned 2022, projects only) or of
-any MCP — client and schemas are written from the official v3 API docs. Distribution is house-style: a
-local build installed into the shared plugin mirror at `~/.local/share/terraform/plugins` (same pattern
-as SigNoz / `noizu/foryou` providers); GitHub `v*` releases via goreleaser exist for checksum/signing
-but there is no registry listing.
+any MCP — client and schemas are written from the official v3 API docs. Provider type name is
+`readthedocs`, `Metadata().Version` is `0.2.0`. Distribution is house-style: a local build installed
+into the shared plugin mirror at `~/.local/share/terraform/plugins` (same pattern as SigNoz /
+`noizu/foryou` providers); GitHub `v*` releases via goreleaser exist for checksum/signing but there is
+no registry listing (the tracked `terraform-registry-manifest.json` only declares protocol version 6.0).
 
 ## System Diagram
 
@@ -54,13 +55,24 @@ DELETE**, env-vars have no PATCH, version changes are only activate/hide via PAT
 keeps a `json` attribute with the raw API object as an escape hatch; list data sources return
 `result_count` + `results_json`.
 
+The client is a thin `net/http` wrapper: one `http.Client` with a 45s timeout, `Authorization: Token …`
+on every request, JSON bodies, paginated collections walked by `limit`/`offset` with a hard stop past
+10,000 accumulated results, error bodies truncated to 500 bytes, and **no retry/backoff** — an RTD 429
+surfaces as a hard provider error.
+
 ## Infrastructure / Delivery
 
 - **Local install (house path)**: `scripts/build-provider.sh` → `go build` into
   `~/.local/share/terraform/plugins` for both `registry.opentofu.org` and `registry.terraform.io`
   mirror layouts; `~/.terraformrc` `dev_overrides` skips `init` downloads.
-- **CI**: `.github/workflows/ci.yml` (build+test on push/PR); `release.yml` runs goreleaser on `v*`
-  tags (multi-arch, checksums, GPG-signed with `gpg-pubkey.asc`).
+- **CI** (`.github/workflows/ci.yml`): `go test ./...` + `go build` on pushes to `main`/`stage` and on
+  every pull request, plus a warn-only `ci-timing` job that reports PR step/run durations against
+  `PR_STEP_MAX_MINUTES`/`PR_RUN_MAX_MINUTES` variables. **Pushes to `develop` are not built** — develop
+  is only exercised through PR runs. CI pins `go-version: "1.22"` while `go.mod` declares `go 1.25.0`
+  and `.tool-versions` pins golang 1.25.8; the test/build steps therefore run on the older default
+  toolchain unless the module's `go` directive forces a download.
+- **Release** (`.github/workflows/release.yml`): goreleaser on `v*` tags (multi-arch, checksums,
+  GPG-signed with `gpg-pubkey.asc`, key imported via `crazy-max/ghaction-import-gpg`), `contents: write`.
 - **No servers, queues, or DB** — the provider is a short-lived child process of the CLI.
 
 ## Key Decisions

@@ -8,7 +8,7 @@ terraform-provider-readthedocs/
 ├── main.go                        # Entry point: plugin serve (tf6server-style handshake via plugin-framework)
 ├── internal/
 │   ├── provider/                  # Provider + all resource/datasource schemas → see below
-│   │   ├── provider.go            # Provider def: token/base_url config, resource & datasource registry
+│   │   ├── provider.go            # Provider def `readthedocs` v0.2.0: token/base_url config, registries
 │   │   ├── res_project.go         # readthedocs_project resource (CRUD on /projects/, no official DELETE)
 │   │   ├── res_rest.go            # version, build (push/rebuild), sync_versions resources
 │   │   ├── res_more.go            # redirect, environment_variable, subproject, sharing (Business) resources
@@ -18,12 +18,13 @@ terraform-provider-readthedocs/
 │       ├── client.go              # From-scratch REST client for RTD API v3 (auth, endpoints, JSON shapes)
 │       └── client_test.go         # Unit tests for the client
 ├── examples/
-│   └── github-utils/              # Working example config (main.tf) + local tfstate (gitignored upstream; present here)
+│   └── github-utils/              # Working example config (main.tf only; tfstate/lockfile are gitignored, not tracked)
 ├── scripts/
 │   └── build-provider.sh          # House build: go build + install into local plugin mirror dirs
 ├── .github/
 │   └── workflows/
-│       ├── ci.yml                 # CI: build + test on push/PR
+│       ├── ci.yml                 # CI: go test + go build on push to main/stage and all PRs,
+│       │                          #   plus a warn-only `ci-timing` PR job (step-sum threshold, never blocks)
 │       └── release.yml            # goreleaser release on v* tags
 ├── .goreleaser.yml                # Release config (multi-OS/arch binaries, checksums)
 ├── gpg-pubkey.asc                 # GPG public key for release signing (2EABB783…E16D0)
@@ -51,7 +52,11 @@ terraform-provider-readthedocs/
 
 ## Notes
 
-- Docs set created 2026-09-01; THREAT-MODEL added 2026-10-07.
-- `examples/github-utils/terraform.tfstate*` are local state artifacts — treat as transient, never commit values.
-- `Portfolio/Utilities/source/terraform-provider-readthedocs/` is an empty untracked scaffolding tree (leftover of monorepo placement) — ignore; do not commit.
+- Docs set created 2026-09-01; THREAT-MODEL added 2026-10-07; swept 2026-10-27.
+- `examples/github-utils/terraform.tfstate*` and `.terraform.lock.hcl` are local artifacts at apply time —
+  transient, gitignored, never commit values. The tracked example is `main.tf` only.
+- The canonical checkout is `Projects/terraform-provider-readthedocs` in the monorepo (gitlink). The
+  former `Portfolio/Utilities/source/terraform-provider-readthedocs/` scaffolding tree no longer exists.
+- Toolchain drift (documented, not changed by this doc): `.tool-versions` pins golang 1.25.8, `go.mod`
+  declares `go 1.25.0`, while `ci.yml` sets `go-version: "1.22"`.
 - `.claude/worktrees/` is gitignored canonical worktree placement (see repo CLAUDE.md).

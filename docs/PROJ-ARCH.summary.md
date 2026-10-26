@@ -10,8 +10,11 @@
   (no project DELETE, no env-var PATCH, version = activate/hide only); `json` passthrough on most
   resources; list data sources return `result_count` + `results_json`.
 - **Delivery**: local build via `scripts/build-provider.sh` into `~/.local/share/terraform/plugins`
-  (dev_overrides/filesystem_mirror, no registry); CI on push/PR; goreleaser GPG-signed releases on
-  `v*` tags.
+  (dev_overrides/filesystem_mirror, no registry; provider type `readthedocs` v0.2.0); CI runs
+  test+build on pushes to `main`/`stage` and all PRs (develop pushes are not built; CI pins go 1.22 vs
+  go.mod 1.25.0); goreleaser GPG-signed releases on `v*` tags.
+- **Client**: 45s HTTP timeout, token header, offset pagination capped at 10k results, 500-byte error
+  truncation, no retry/backoff.
 - **Key decisions**: from-scratch client for full v3 coverage; generic datasource pattern; raw-JSON
   escape hatch; local mirror distribution; only implement verbs the public API actually offers.
 - **No persistence layer**: remote state at RTD + plaintext tfstate (token/env-var/sharing values
