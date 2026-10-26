@@ -1,5 +1,7 @@
 # PROJ-ARCH — terraform-provider-readthedocs
 
+<!-- 〚📁:ec51fbcd-2e90-5920-ae4c-510bb8bb3f4f〛 PROJ-ARCH :: Architecture — CLI plugin model, provider/rtdapi split, REST data flow, delivery, key decisions -->
+
 ## Overview
 
 A from-scratch **Terraform/OpenTofu provider** for the hosted **Read the Docs REST API v3**, written in

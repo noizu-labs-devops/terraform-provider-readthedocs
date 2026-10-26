@@ -1,0 +1,98 @@
+---
+pointers:
+  276ac5af-7659-54ef-ad6e-0d03a053e3aa:
+    created_at: 2026-10-26T22:21:50.043661Z
+    description: Local CLI plugin threat model — token/state crown jewels, trust boundaries, T-001..T-009 register
+    file_path: docs/THREAT-MODEL.md
+    function: THREAT-MODEL
+    kind: file
+    line: 3
+    locations:
+      - file_path: docs/THREAT-MODEL.md
+        line: 3
+    token: 𓈲𓖾𓛯𓨪
+    updated_at: 2026-10-26T22:21:50.043661Z
+  4191ab08-ebeb-5020-8e97-c5e2a7bf0550:
+    created_at: 2026-10-26T22:21:50.043684Z
+    description: Repo tree map — entry point, provider/rtdapi packages, examples, workflows, and setup-required files
+    file_path: docs/PROJ-LAYOUT.md
+    function: PROJ-LAYOUT
+    kind: file
+    line: 3
+    locations:
+      - file_path: docs/PROJ-LAYOUT.md
+        line: 3
+    token: 𔎡𔄋𔃚𔘀
+    updated_at: 2026-10-26T22:21:50.043684Z
+  5570d299-610f-582e-be4c-255e082f8525:
+    created_at: 2026-10-26T22:21:50.043676Z
+    description: Provider, 8 resources and 18 data sources on terraform-plugin-framework (one generic datasource)
+    file_path: README.md
+    function: internal/provider
+    kind: module
+    line: 75
+    locations:
+      - file_path: README.md
+        line: 75
+    token: 𓘽𓲜𔎬𓳵
+    updated_at: 2026-10-26T22:21:50.043676Z
+  5c6896e6-ef6f-5bce-97ef-958f5b1cfb83:
+    created_at: 2026-10-26T22:21:50.043693Z
+    description: Hand-written Read the Docs API v3 client — token auth, endpoint builders, paginated List, JSON shapes (+ client_test.go)
+    file_path: README.md
+    function: internal/rtdapi
+    kind: module
+    line: 73
+    locations:
+      - file_path: README.md
+        line: 73
+    token: 𔖁𔉝𔕤𓆣
+    updated_at: 2026-10-26T22:21:50.043693Z
+  7fbba55c-4168-5965-956b-786259c7687e:
+    created_at: 2026-10-26T22:21:50.043643Z
+    description: Repo entry point — what the provider is, why, getting started, and how it works
+    file_path: README.md
+    function: README
+    kind: file
+    line: 3
+    locations:
+      - file_path: README.md
+        line: 3
+    token: 𓄘𓢟𓚦𓎾
+    updated_at: 2026-10-26T22:21:50.043643Z
+  a2ad7525-a415-526b-963f-808a328f8355:
+    created_at: 2026-10-26T22:21:50.043680Z
+    description: Agent conventions — commands, branch/PR policy and worktree rules for this repo
+    file_path: CLAUDE.md
+    function: CLAUDE
+    kind: file
+    line: 3
+    locations:
+      - file_path: CLAUDE.md
+        line: 3
+    token: 𓛣𓰍𓭳𓤕
+    updated_at: 2026-10-26T22:21:50.043680Z
+  af6a7a52-00a1-5635-9516-7e11c3afd8c8:
+    created_at: 2026-10-26T22:21:50.043689Z
+    description: No persistence layer — provider/resource/datasource schemas, tfstate interaction, and shipped file formats
+    file_path: docs/PROJ-SCHEMA.md
+    function: PROJ-SCHEMA
+    kind: file
+    line: 3
+    locations:
+      - file_path: docs/PROJ-SCHEMA.md
+        line: 3
+    token: 𔏺𔅨𓡸𓌨
+    updated_at: 2026-10-26T22:21:50.043689Z
+  ec51fbcd-2e90-5920-ae4c-510bb8bb3f4f:
+    created_at: 2026-10-26T22:21:50.043671Z
+    description: Architecture — CLI plugin model, provider/rtdapi split, REST data flow, delivery, key decisions
+    file_path: docs/PROJ-ARCH.md
+    function: PROJ-ARCH
+    kind: file
+    line: 3
+    locations:
+      - file_path: docs/PROJ-ARCH.md
+        line: 3
+    token: 𓒆𓤥𓧸𔓟
+    updated_at: 2026-10-26T22:21:50.043671Z

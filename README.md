@@ -1,5 +1,7 @@
 # terraform-provider-readthedocs
 
+<!-- 〚📁:7fbba55c-4168-5965-956b-786259c7687e〛 README :: Repo entry point — what the provider is, why, getting started, and how it works -->
+
 **Repo:** https://github.com/the-robot-lives/terraform-provider-readthedocs
 
 From-scratch Terraform/OpenTofu provider for the Read the Docs API v3.
@@ -68,7 +70,9 @@ Example config: [`examples/github-utils/main.tf`](examples/github-utils/main.tf)
 
 ## How It Works
 
+<!-- 〚📦:5c6896e6-ef6f-5bce-97ef-958f5b1cfb83〛 internal/rtdapi :: Hand-written Read the Docs API v3 client — token auth, endpoint builders, paginated List, JSON shapes (+ client_test.go) -->
 - `internal/rtdapi/` — hand-written Read the Docs API v3 client.
+<!-- 〚📦:5570d299-610f-582e-be4c-255e082f8525〛 internal/provider :: Provider, 8 resources and 18 data sources on terraform-plugin-framework (one generic datasource) -->
 - `internal/provider/` — Terraform plugin-framework resources and data sources.
 - GPG signing key for releases: [`gpg-pubkey.asc`](gpg-pubkey.asc), fingerprint `2EABB783A4251C2A26FCD82E4CACEE95EB6E16D0`; `terraform-registry-manifest.json` is kept ready for a future registry publish.
 
