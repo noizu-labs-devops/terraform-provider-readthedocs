@@ -1,5 +1,7 @@
 # PROJ-SCHEMA — terraform-provider-readthedocs
 
+<!-- 〚📁:af6a7a52-00a1-5635-9516-7e11c3afd8c8〛 PROJ-SCHEMA :: No persistence layer — provider/resource/datasource schemas, tfstate interaction, and shipped file formats -->
+
 ## No Persistence Layer
 
 This project has **no database / SQL schema**. It is a Go Terraform/OpenTofu provider that talks to the

@@ -1,5 +1,7 @@
 # THREAT-MODEL — terraform-provider-readthedocs
 
+<!-- 〚📁:276ac5af-7659-54ef-ad6e-0d03a053e3aa〛 THREAT-MODEL :: Local CLI plugin threat model — token/state crown jewels, trust boundaries, T-001..T-009 register -->
+
 ## Overview
 
 This project is a **local CLI plugin, not a service**: no ingress, no listeners, no persistence of its

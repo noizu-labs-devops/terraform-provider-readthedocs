@@ -1,5 +1,7 @@
 # CLAUDE.md — terraform-provider-readthedocs
 
+<!-- 〚📁:a2ad7525-a415-526b-963f-808a328f8355〛 CLAUDE :: Agent conventions — commands, branch/PR policy and worktree rules for this repo -->
+
 Custom Terraform/OpenTofu provider for ReadTheDocs. See README.md for schema + build.
 
 

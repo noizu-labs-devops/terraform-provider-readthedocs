@@ -1,5 +1,7 @@
 # Project Layout — terraform-provider-readthedocs
 
+<!-- 〚📁:4191ab08-ebeb-5020-8e97-c5e2a7bf0550〛 PROJ-LAYOUT :: Repo tree map — entry point, provider/rtdapi packages, examples, workflows, and setup-required files -->
+
 From-scratch Terraform/OpenTofu provider for the **Read the Docs API v3** (`the-robot-lives/readthedocs`).
 Go + terraform-plugin-framework. ~2.2k LOC; single-level tree, no `layout/` extraction needed.
 
