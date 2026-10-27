@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 2026-10-28
+- docs: add AGENT-README.md (agent orientation)
+
 Dated work log — newest first. One line per landed change, extended in place as it progresses (` → develop`, ` → stage`, ` → main`).
 
 ## 2026-10-26
